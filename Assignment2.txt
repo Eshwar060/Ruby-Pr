@@ -1,0 +1,128 @@
+#Assignment 2
+##########################################################################################
+#a For Loop
+
+puts " A| For Loop"
+i = 0;
+for i in 1 .. 10
+	print "   " + i.to_s ######print "%3d" % i ######print "#{i}"
+	i = i+1
+end
+puts
+
+#b While Loop
+puts " B| While Loop"
+i = 0;
+while i < 10
+	i = i+1
+	print "   " + i.to_s
+end
+puts
+
+
+#######################################################################################
+def custom_line(char="*", times = 60)
+	i = 0
+	for i in 1..times
+		print char
+	end
+	puts
+end
+
+puts "Short Line"
+custom_line("-", 25)
+
+puts "Line"
+custom_line()
+
+puts "Long Line"
+custom_line("^",100)
+
+
+############################################################################################
+
+#Calculator Using Case When
+print "Enter A = "
+a = gets.chomp
+print "Enter B = "
+b = gets.chomp
+print "Enter Operation(+,-,*,/,%) : "
+o = gets.chomp
+
+case o
+when "+"
+	c = a.to_i + b.to_i
+when "-"
+	c = a.to_i - b.to_i
+when "*"
+	c = a.to_i * b.to_i
+when "/"
+	c = a.to_i / b.to_i
+when "%"
+	c = a.to_i % b.to_i
+else
+	c = "No Operation"
+end
+
+puts a + o + b + " = " + c.to_s
+
+#####################################################################################
+
+puts "\nBitwise Operations"
+puts "``````````````````"
+a= 4 # 0100
+b= 6 # 0110
+
+puts "a & b = "+ (a&b).to_s
+puts "a | b = "+ (a|b).to_s
+puts "a ^ b = "+ (a^b).to_s
+puts "~a = "+ (~a).to_s
+puts "a<<4 "+ (a<<2).to_s
+puts "a>>4 "+ (a>>2).to_s
+
+
+#####################################################################################
+
+puts "\nLoop Operations BREAK"
+puts "``````````````````"
+i = 0
+for i in 0..5
+	if i== 2
+		puts "2 is Hit breaking Loop"
+		break
+	end
+	puts i
+end
+
+puts "\nLoop Operations NEXT"
+puts "``````````````````"
+i = 0
+for i in 0..5
+	if i==2 or i==3
+		puts "Skipped here"
+		next
+	end
+	puts i
+end
+
+puts "\nLoop Operations REDO"
+puts "``````````````````"
+i = 0
+j = 0
+for i in 0..5
+	if i== 2 and j <= 2
+		puts "Redoing Here at i = #{i} and j = #{j}"
+		j = j+1
+		redo
+	end
+	puts i
+end
+
+puts "\nLoop Operations RETRY"
+puts "``````````````````"
+#for i in 0..5
+#   retry if i > 2
+#puts "Value of local variable is #{i}"
+#end
+puts "Since Ruby 1.9 retry cannot be used in loops anymore."
+puts "Ref: https://docs.ruby-lang.org/en/2.4.0/syntax/exceptions_rdoc.html"
